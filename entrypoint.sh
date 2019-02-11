@@ -1,7 +1,7 @@
 #!/bin/bash
 # run gcloud-snapshot.sh once and execute the notify
 # Alternative if $DAEMON is set, run it in a loop with a configurable delay
-# ($SLEEP environment variable) and a notification command 
+# ($SLEEP environment variable) and a notification command
 # ($NOTIFY_COMMAND environment variable), for example a curl webhook
 # notification (e.g. to Slack).
 run() {

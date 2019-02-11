@@ -168,7 +168,7 @@ getInstanceName()
 getDeviceList()
 {
     # echo -e "$(gcloud $OPT_INSTANCE_SERVICE_ACCOUNT compute disks list --filter "users~instances/$1\$ $FILTER_CLAUSE" --format='value(name)')"
-    
+
     local filter=""
 
     # if using remote instances (-r), then no name filter is required
@@ -376,7 +376,7 @@ main()
 
         # build snapshot name
         local snapshot_name=$(createSnapshotName ${PREFIX} ${device_name} ${DATE_TIME})
-        
+
         # delete snapshots for this disk that were created older than DELETION_DATE
         deleteSnapshots "$PREFIX-.*" "$DELETION_DATE" "${device_id}"
 
