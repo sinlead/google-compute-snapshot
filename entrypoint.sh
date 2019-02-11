@@ -4,6 +4,19 @@
 # ($SLEEP environment variable) and a notification command
 # ($NOTIFY_COMMAND environment variable), for example a curl webhook
 # notification (e.g. to Slack).
+
+service_account_auth() {
+  if [ -n "${KEY_FILE}" ]; then
+    gcloud auth activate-service-account --key-file="$KEY_FILE"
+  fi
+}
+
+set_project() {
+    if [ -n "${PROJECT}" ]; then
+        gcloud config set project "$PROJECT"
+    fi
+}
+
 run() {
 	if [ -n "${FILTER}" ]; then
 		/opt/gcloud-snapshot.sh -r -f "$FILTER"
@@ -15,6 +28,9 @@ run() {
 		bash -c "$NOTIFY_COMMAND"
 	fi
 }
+
+service_account_auth
+set_project
 
 if [ -n "${DAEMON}" ]; then
 	if [ -z "${SLEEP}" ]; then

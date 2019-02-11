@@ -33,7 +33,7 @@ ssh on to the server you wish to have backed up
 **Install Script**: Download the latest version of the snapshot script and make it executable:
 ```
 cd ~
-wget https://raw.githubusercontent.com/jacksegal/google-compute-snapshot/master/gcloud-snapshot.sh
+wget https://raw.githubusercontent.com/sinlead/google-compute-snapshot/master/gcloud-snapshot.sh
 chmod +x gcloud-snapshot.sh
 sudo mkdir -p /opt/google-compute-snapshot
 sudo mv gcloud-snapshot.sh /opt/google-compute-snapshot/
@@ -88,11 +88,16 @@ However it is also possible to set the environment variables `DAEMON` which will
 continually and take snapshots at intervals. By default the interval is 21600 seconds (6 hours) but can
 be overridden by setting the environment variable `SLEEP`.
 
-You set environment variable `FILTER` to set a filter condition as documented in
+Other environment variables:
+ - `FILTER`: set a filter condition as documented in
 [Matching on specific disks](#matching-on-specific-disks). Otherwise all disks are snapshotted.
 
-At the time of writing, this image is available on [Docker Hub](https://hub.docker.com/r/jacksegal/google-compute-snapshot/)
-as `jacksegal/google-compute-snapshot`.
+ - `PROJECT`: which project to use (GCP project-id).
+
+ - `KEY_FILE`: path to the service account credential file.
+
+At the time of writing, this image is available on [Docker Hub](https://hub.docker.com/r/sinlead/google-compute-snapshot/)
+as `sinlead/google-compute-snapshot`.
 
 ## Usage Examples
 
